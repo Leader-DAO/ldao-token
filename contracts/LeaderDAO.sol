@@ -4,10 +4,15 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @custom:security-contact hello@leaderdao.io
-contract LeaderDAO is ERC20, ERC20Permit, ERC20Votes {
-    constructor() ERC20("LeaderDAO", "LDAO") ERC20Permit("LeaderDAO") {
+contract LeaderDAO is ERC20, ERC20Permit, ERC20Votes, Ownable {
+    constructor(address initialOwner)
+        ERC20("LeaderDAO", "LDAO")
+        ERC20Permit("LeaderDAO")
+        Ownable(initialOwner)
+    {
         _mint(msg.sender, 1000000000 * 10 ** decimals());
     }
 

@@ -1,11 +1,12 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   defaultNetwork: "mainnet",
   networks: {
     mainnet: {
-      url: "https://nd-124-196-782.p2pify.com/fcba1ddfb2eac1f07edfa321123aacdd",
+      url: "MAINNET_RPC_URL",
       accounts: ["<KEY>"]
     }
   },
@@ -17,6 +18,9 @@ module.exports = {
         runs: 200
       }
     }
+  },
+  etherscan : {
+    apiKey: "<KEY>"
   },
   paths: {
     sources: "./contracts",
